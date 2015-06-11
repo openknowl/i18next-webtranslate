@@ -4,8 +4,7 @@
 //
 module.exports = function(grunt) {
 
-  grunt.loadNpmTasks('grunt-contrib');
-  grunt.loadTasks("buildtasks");
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
 
