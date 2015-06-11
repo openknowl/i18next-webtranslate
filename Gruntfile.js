@@ -27,8 +27,8 @@ module.exports = function(grunt) {
     stylus: {
       build: {
         files: [{
-          src: "client/assets/css/main.css",
-          dest: "client/stylus/main.styl"
+          src: "client/stylus/main.styl",
+          dest: "client/assets/css/main.css"
         }]
       }
     },
@@ -47,7 +47,8 @@ module.exports = function(grunt) {
           cwd: "client/app/modules",
           src: ["**/*.jade"],
           dest: "client/assets/templates/",
-          ext: ".html"
+          ext: ".html",
+          flatten: true
         }]
       }
     },
@@ -55,8 +56,8 @@ module.exports = function(grunt) {
     handlebars: {
       build: {
         files: [{
-          src: "client/dist/debug/templates.js",
-          dest: "client/assets/templates/*.html"
+          src: "client/assets/templates/**/*.html",
+          dest: "client/dist/debug/templates.js"
         }]
       }
     },
@@ -66,35 +67,39 @@ module.exports = function(grunt) {
     // dist/debug/require.js, because we want to only load one script file in
     // index.html.
     concat: {
-      compile: [{
+      build: {
         src: [
           "client/assets/js/libs/almond.js",
           "client/dist/debug/templates.js",
           "client/dist/debug/require.js"
         ],
         dest: "client/dist/debug/require.js"
-      }]
+      }
     },
 
     // This task uses James Burke's excellent r.js AMD build tool.  In the
     // future other builders may be contributed as drop-in alternatives.
     requirejs: {
-      // Include the main configuration file
-      mainConfigFile: "client/app/config.js",
-
-      // Output file
-      out: "client/dist/debug/require.js",
-
-      excludeShallow: [
-          "admin/adminViews"
-        //, "modules/common/personProfile"
-      ],
-
-      // Root application module
-      name: "config",
-
-      // Do not wrap everything in an IIFE
-      wrap: false
+      build: {
+        options: {
+          // Include the main configuration file
+          mainConfigFile: "client/app/config.js",
+    
+          // Output file
+          out: "client/dist/debug/require.js",
+    
+          excludeShallow: [
+              "admin/adminViews"
+            //, "modules/common/personProfile"
+          ],
+    
+          // Root application module
+          name: "config",
+    
+          // Do not wrap everything in an IIFE
+          wrap: false
+        }
+      }
     },
   });
 
@@ -103,14 +108,18 @@ module.exports = function(grunt) {
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
-  grunt.registerTask("default", "clean lint jade stylus handlebars requirejs concat");
+  grunt.task.registerTask("default", [
+    "clean",
+    "jade",
+    "stylus",
+    "handlebars",
+    "requirejs",
+    "concat"
+  ]);
 
   // The debug task is simply an alias to default to remain consistent with
   // debug/release.
-  grunt.registerTask("debug", "default");
-
-  // The release task will run the debug tasks and then minify the
-  // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "default min mincss copy");
-
+  grunt.task.registerTask("debug", [
+    "default"
+  ]);
 };
