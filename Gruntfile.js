@@ -125,53 +125,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Running the server without specifying an action will run the defaults,
-    // port: 8080 and host: 127.0.0.1.  If you would like to change these
-    // defaults, simply add in the properties `port` and `host` respectively.
-    //
-    // Changing the defaults might look something like this:
-    //
-    // server: {
-    //   host: "127.0.0.1", port: 9001
-    //   debug: { ... can set host and port here too ...
-    //  }
-    //
-    //  To learn more about using the server task, please refer to the code
-    //  until documentation has been written.
-    // server: {
-    //   files: { "favicon.ico": "client/assets/favicon.ico" },
-
-    //   folders: {
-    //       "app": "client/app",
-    //       "assets": "client/assets",
-    //       "app/templates": "client/assets/templates"
-    //   },
-
-    //   debug: {
-    //     files: { "favicon.ico": "client/favicon.ico" },
-
-    //     folders: {
-    //       "app": "client/dist/debug",
-    //       "assets/js/libs": "client/dist/debug"
-    //     }
-    //   },
-
-    //   release: {
-    //     // These two options make it easier for deploying, by using whatever
-    //     // PORT is available in the environment and defaulting to any IP.
-    //     host: "0.0.0.0",
-    //     port: process.env.PORT || 8000,
-
-    //     files: { "favicon.ico": "client/favicon.ico" },
-
-    //     folders: {
-    //       "app": "client/dist/release",
-    //       "assets/js/libs": "client/dist/release",
-    //       "assets/css": "client/dist/release"
-    //     }
-    //   }
-    // },
-
     // This task uses James Burke's excellent r.js AMD build tool.  In the
     // future other builders may be contributed as drop-in alternatives.
     requirejs: {
