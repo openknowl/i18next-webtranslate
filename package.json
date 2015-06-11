@@ -1,28 +1,22 @@
 {
-  "author": "jamuhl"
-  , "name": "i18next-webtranslate"
-  , "version": "0.0.0"
-  , "private": true
-  , "main": "server.js"
-  , "engines": {
-        "node": ">= 0.6.18"
-      , "npm": ">= 1.1.x"
-    }
-  , "dependencies": {
-      "grunt": "*"
-    , "grunt-contrib": ">=0.1.0"
-    , "requirejs": "2.0.6"
-    , "express": ">= 3.0.x"
-    , "stylus": ">= 0.24.0"
-    , "nib": ">= 0.3.2"
-    , "jade": ">= 0.0.1"
-    , "markdown": ">= 0.4.0"
-    , "handlebars": ">= 0.0.1"
-    , "async": ">= 0.1.18"
-    , "lodash": ">= 0.5.x"
-    , "zipstream": ">=0.2.1"
-    , "i18next": ">=1.5.0"
-    }
-  , "devDependencies": {}
-  , "scripts": {}
+  "author": "jamuhl",
+  "name": "i18next-webtranslate",
+  "version": "0.1.0",
+  "main": "server.js",
+  "engines": {
+    "node": ">= 0.6.18",
+    "npm": ">= 1.1.x"
+  },
+  "dependencies": {
+    "express": "^4.12.4",
+    "grunt": "^0.4.5",
+    "i18next": "^1.9.0",
+    "lodash": "^3.9.3"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/openknowl/i18next-webtranslate"
+  }
 }
