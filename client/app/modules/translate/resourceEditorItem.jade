@@ -3,23 +3,23 @@
 		.span2
 			a.scrollTo(style='display: none;')
 			.key
-				{{parseKey key }}
+				| {{parseKey key }}
 		.span5
 			.editor-wrapper(style="display:inline-block; position:relative;")
-				{{#if isArray}}
+				| {{#if isArray}}
 				textarea.span5.editor(rows='5', disabled='disabled') {{value}}
-				{{else}}
+				| {{else}}
 				input.span5.editor(type='text', value!='{{value}}', disabled='disabled')
-				{{/if}}
+				| {{/if}}
 
 		.span5
 			.compareControl(style="display: none;")
 				.compare-editor-wrapper(style="display:inline-block; position:relative;")
-					{{#if isArray}}
+					| {{#if isArray}}
 					textarea.span5.compare-editor(rows='5', disabled='disabled') {{compare}}
-					{{else}}
+					| {{else}}
 					input.span5.compare-editor(type='text', value!='{{compare}}', disabled='disabled')
-					{{/if}}
+					| {{/if}}
 
 		.span5
 			.previewControl
@@ -31,7 +31,7 @@
 						i.icon-refresh
 					.well.translated
 				.previewSection
-					{{parseValue fallback.value }}
+					| {{parseValue fallback.value }}
 
 	.row-fluid
 		.span2 &nbsp;
@@ -44,30 +44,30 @@
 				.pull-right.editCommands(style='display: none;')
 					button.btn.btn-mini.cancel
 						i.icon-remove
-						{{t "editor.cancel" }}
+						| {{t "editor.cancel" }}
 					button.btn.btn-warning.btn-mini.save
 						i.icon-ok
-						{{t "editor.save" }}
+						| {{t "editor.save" }}
 				.pull-right.removeCommands(style='display: none;')
 					button.btn.btn-mini.cancelRemove
 						i.icon-remove
-						{{t "editor.cancel" }}
+						| {{t "editor.cancel" }}
 					button.btn.btn-warning.btn-mini.confirmRemove
 						i.icon-ok
-						{{t "editor.delete" }}
+						| {{t "editor.delete" }}
 				.pull-right.mainCommands
 					button.btn.btn-mini.remove
 						i.icon-remove
-						{{t "editor.delete" }}
+						| {{t "editor.delete" }}
 					button.btn.btn-mini.edit
 						i.icon-edit
-						{{t "editor.edit" }}
+						| {{t "editor.edit" }}
 
 		.span5
 			.compare-commands.commands(style="display: none;")
 				button.btn.btn-mini.preview
 					i.icon-eye-open
-					{{t "editor.th.displayedValue" }}
+					| {{t "editor.th.displayedValue" }}
 
 				//- uncomment to make editable
 				//-
@@ -104,9 +104,9 @@
 				.pull-right
 					button.btn.btn-mini.test
 						i.icon-check
-						{{t "editor.test" }}
+						| {{t "editor.test" }}
 
 				button.btn.btn-mini.compare
 					i.icon-resize-horizontal
-					{{t "editor.resourceItem.compare"}}
+					| {{t "editor.resourceItem.compare"}}
 
