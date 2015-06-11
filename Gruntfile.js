@@ -18,7 +18,11 @@ module.exports = function(grunt) {
 
     // The clean task ensures all files are removed from the dist/ directory so
     // that no files linger from previous builds.
-    clean: ["client/dist/", "client/assets/templates"],
+    clean: {
+      build: {
+        src: ["client/dist/", "client/assets/templates/"]
+      }
+    },
 
     // The lint task will run the build configuration and the application
     // JavaScript through JSHint and report any errors.  You can change the
@@ -38,31 +42,34 @@ module.exports = function(grunt) {
     // The concat task depends on this file to exist, so if you decide to
     // remove this, ensure concat is updated accordingly.
 
-    // jst: {
-    //   "dist/debug/templates.js": [
-    //     "app/templates/**/*.html"
-    //   ]
-    // },
-
     stylus: {
-      "client/assets/css/main.css": [
-        "client/stylus/main.styl"//"client/stylus/**/*.styl"
-      ]
+      build: {
+        files: [{
+          src: "client/assets/css/main.css",
+          dest: "client/stylus/main.styl"
+        }]
+      }
     },
 
     jade: {
-      "client/assets/templates": [
-        "client/app/modules/**/*.jade"
-      ],
-      "client/assets/templates/admin": [
-        "client/app/admin/**/*.jade"
-      ]
+      build: {
+        files: [{
+          expand: true,
+          cwd: "client/app/modules",
+          src: ["**/*.jade"],
+          dest: "client/assets/templates/",
+          ext: ".html"
+        }]
+      }
     },
 
     handlebars: {
-      "client/dist/debug/templates.js": [
-        "client/assets/templates/*.html"
-      ]
+      build: {
+        files: [{
+          src: "client/dist/debug/templates.js",
+          dest: "client/assets/templates/*.html"
+        }]
+      }
     },
 
     // The concatenate task is used here to merge the almond require/define
@@ -70,11 +77,14 @@ module.exports = function(grunt) {
     // dist/debug/require.js, because we want to only load one script file in
     // index.html.
     concat: {
-      "client/dist/debug/require.js": [
-        "client/assets/js/libs/almond.js",
-        "client/dist/debug/templates.js",
-        "client/dist/debug/require.js"
-      ]
+      compile: [{
+        src: [
+          "client/assets/js/libs/almond.js",
+          "client/dist/debug/templates.js",
+          "client/dist/debug/require.js"
+        ],
+        dest: "client/dist/debug/require.js"
+      }]
     },
 
     // This task uses the MinCSS Node.js project to take all your CSS files in
@@ -121,19 +131,6 @@ module.exports = function(grunt) {
         options: { basePath: "client/assets" },
         files: {
           "client/dist/release/assets": ["client/assets/index.html", "client/assets/favicon.ico"]
-        }
-      }
-    },
-
-    compress: {
-      zip: {
-        options: {
-          mode: "zip",
-          basePath: "client/dist/release/assets/",
-          level: 1
-        },
-        files: {
-          "client/dist/release/i18nextWT-0.1.0.zip": "client/dist/release/assets/**/*"
         }
       }
     },
@@ -233,6 +230,6 @@ module.exports = function(grunt) {
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "default min mincss copy compress");
+  grunt.registerTask("release", "default min mincss copy");
 
 };
