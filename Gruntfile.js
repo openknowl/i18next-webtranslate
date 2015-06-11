@@ -96,19 +96,6 @@ module.exports = function(grunt) {
       // Do not wrap everything in an IIFE
       wrap: false
     },
-
-    watch: {
-      jade: {
-        files: "client/**/*.jade",
-        tasks: "jade"
-      },
-
-      stylus: {
-        files: "client/stylus/**/*.styl",
-        tasks: "stylus"
-      }
-    }
-
   });
 
   // The default task will remove all contents inside the dist/ folder, lint
