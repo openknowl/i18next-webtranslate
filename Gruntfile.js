@@ -24,16 +24,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // The lint task will run the build configuration and the application
-    // JavaScript through JSHint and report any errors.  You can change the
-    // options for this task, by reading this:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md
-    lint: {
-      files: [
-        /*"build/config.js", */"client/app/**/*.js"
-      ]
-    },
-
     // The jst task compiles all application templates into JavaScript
     // functions with the underscore.js template function from 1.2.4.  You can
     // change the namespace and the template options, by reading this:
