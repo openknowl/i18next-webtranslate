@@ -98,8 +98,8 @@ module.exports = function(grunt) {
     },
   });
 
-  // The default task will remove all contents inside the dist/ folder, lint
-  // all your code, precompile all the underscore templates into
+  // The default task will remove all contents inside the dist/ folder,
+  // precompile all the underscore templates into
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
