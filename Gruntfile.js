@@ -24,14 +24,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // The jst task compiles all application templates into JavaScript
-    // functions with the underscore.js template function from 1.2.4.  You can
-    // change the namespace and the template options, by reading this:
-    // https://github.com/tbranyen/build-tasks/tree/master/jst
-    //
-    // The concat task depends on this file to exist, so if you decide to
-    // remove this, ensure concat is updated accordingly.
-
     stylus: {
       build: {
         files: [{
@@ -41,6 +33,13 @@ module.exports = function(grunt) {
       }
     },
 
+    // The jst task compiles all application templates into JavaScript
+    // functions with the underscore.js template function from 1.2.4.  You can
+    // change the namespace and the template options, by reading this:
+    // https://github.com/tbranyen/build-tasks/tree/master/jst
+    //
+    // The concat task depends on this file to exist, so if you decide to
+    // remove this, ensure concat is updated accordingly.
     jade: {
       build: {
         files: [{
