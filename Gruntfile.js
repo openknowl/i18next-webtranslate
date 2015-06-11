@@ -30,17 +30,6 @@ module.exports = function(grunt) {
       ]
     },
 
-    // The jshint option for scripturl is set to lax, because the anchor
-    // override inside main.js needs to test for them so as to not accidentally
-    // route.
-    jshint: {
-      options: {
-        scripturl: true,
-        laxcomma: true,
-        loopfunc: true
-      }
-    },
-
     // The jst task compiles all application templates into JavaScript
     // functions with the underscore.js template function from 1.2.4.  You can
     // change the namespace and the template options, by reading this:
